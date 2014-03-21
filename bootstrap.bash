@@ -5,7 +5,7 @@ set -e
 apt-get update
 
 ### Set up Ruby M2X example
-
+echo "Setting up Ruby demo..."
 # Set up Ruby environment for M2X
 # NOTE: In a production environment, you should install a more up-to-date Ruby.
 # We don't here for the sake of a quick first-start time for this VM.
@@ -21,8 +21,8 @@ cp /vagrant/loadreport.cron /etc/cron.d/loadreport
 cp /vagrant/loadreport.logrotate /etc/logrotate.d/loadreport
 
 
-
 ### Set up Python M2X Example
+echo "Setting up Python demo..."
 apt-get -y install python-pip
 pip install m2x
 
@@ -33,3 +33,5 @@ pip install pyyaml
 chmod 754 /vagrant/stockreport.py
 cp /vagrant/stockreport.cron /etc/cron.d/stockreport
 cp /vagrant/stockreport.logrotate /etc/logrotate.d/stockreport
+
+echo "Done setting up demos."
