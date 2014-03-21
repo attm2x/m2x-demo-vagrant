@@ -51,7 +51,7 @@ If not, you can look at loadreport.log in your repo, which records any errors in
 
 ## Setting up the Python Example
 
-# In the m2x-demo-vagrant repo that you checked out, copy **stockreport_feed_info.yaml.example** to **stockreport_feed_info.yaml**. Open stockreport_feed_info.yaml in an editor.
+In the m2x-demo-vagrant repo that you checked out, copy **stockreport_feed_info.yaml.example** to **stockreport_feed_info.yaml**. Open stockreport_feed_info.yaml in an editor.
 
 On m2x.att.com, click your name in the upper-right hand corner, and click the "Master Keys" tab. Copy the Master Key value, and paste it into stockreport_feed_info.yaml.
 
