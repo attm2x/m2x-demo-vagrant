@@ -17,5 +17,9 @@ tmp
 _yardoc
 doc/
 
+# Vagrant
+.vagrant
+
 # M2X-specific
-feed_info.yaml
+loadreport_feed_info.yaml
+loadreport.log

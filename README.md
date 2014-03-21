@@ -38,7 +38,7 @@ The Data Source Name should be "Vagrant Load" and the Data Source Description sh
 
 ## Configuring the example application
 
-Copy feed_info.yaml.example to feed_info.yaml and edit it to put in your API key and your Feed ID. Both are visible on the data source blueprint page on m2x.att.com.
+Copy **loadreport_feed_info.yaml.example** to **loadreport_feed_info.yaml** and edit it to put in your API key and your Feed ID. Both are visible on the data source blueprint page on m2x.att.com.
 
 You should now be sending data on 1-minute, 5-minute, and 15-minute load averages from your Vagrant virtual machine to AT&T M2X. It should be updating every minute, and if you refresh your AT&T M2X "Vagrant Load" Blueprint page, you should be able to click each load average and see graphs showing your load averages over time.
 

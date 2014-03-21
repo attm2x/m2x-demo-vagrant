@@ -7,7 +7,7 @@ TIMEFORMAT = "%Y-%m-%d %H:%M:%S"
 puts Time.now.strftime(TIMEFORMAT) + " Starting loadreport.rb run"
 
 
-feedinfo = YAML.load_file('/vagrant/feed_info.yaml')
+feedinfo = YAML.load_file('/vagrant/loadreport_feed_info.yaml')
 API_KEY = feedinfo["apikey"]
 FEED = feedinfo["feedid"]
 
