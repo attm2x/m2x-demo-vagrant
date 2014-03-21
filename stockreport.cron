@@ -1,0 +1,1 @@
+*/5 * * * * vagrant /vagrant/stockreport.py >> /vagrant/stockreport.log 2>&1

@@ -42,4 +42,10 @@ Copy **loadreport_feed_info.yaml.example** to **loadreport_feed_info.yaml** and 
 
 You should now be sending data on 1-minute, 5-minute, and 15-minute load averages from your Vagrant virtual machine to AT&T M2X. It should be updating every minute, and if you refresh your AT&T M2X "Vagrant Load" Blueprint page, you should be able to click each load average and see graphs showing your load averages over time.
 
-If not, you can look at loadreport.log in your repo, which records any errors in sending the data to M2X. You can also SSH to the Vagrant virtual machine with the ```vagrant ssh``` command.
+If not, you can look at loadreport.log in your repo, which records any errors in sending the data to M2X. You can also SSH to the Vagrant virtual machine with the ```vagrant ssh``` command to run any standard Linux/Unix commands.
+
+
+
+## Python Example
+
+# On m2x.att.com, click your name in the upper-right hand corner, and click the "Master Keys" tab. Copy the Master Key value, and paste it into stockreport_feed_info.yaml. (Copy it from stockreport_feed_info.yaml.example for the format.)

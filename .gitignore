@@ -23,3 +23,5 @@ doc/
 # M2X-specific
 loadreport_feed_info.yaml
 loadreport.log
+stockreport_feed_info.yaml
+stockreport.log

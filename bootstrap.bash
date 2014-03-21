@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 apt-get update
 
 ### Set up Ruby M2X example
@@ -23,6 +25,11 @@ cp /vagrant/loadreport.logrotate /etc/logrotate.d/loadreport
 ### Set up Python M2X Example
 apt-get -y install python-pip
 pip install m2x
+
+# These are needed for our example in particular.
 pip install ystockquote
+pip install pyyaml
 
-
+chmod 754 /vagrant/stockreport.py
+cp /vagrant/stockreport.cron /etc/cron.d/stockreport
+cp /vagrant/stockreport.logrotate /etc/logrotate.d/stockreport
