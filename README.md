@@ -49,7 +49,7 @@ You should now be sending data on 1-minute, 5-minute, and 15-minute load average
 If not, you can look at loadreport.log in your repo, which records any errors in sending the data to M2X. You can also SSH to the Vagrant virtual machine with the ```vagrant ssh``` command to run any standard Linux/Unix commands.
 
 
-## Setting up the Python Example
+## Setting up the Python Demo
 
 In the m2x-demo-vagrant repo that you checked out, copy **stockreport_feed_info.yaml.example** to **stockreport_feed_info.yaml**. Open stockreport_feed_info.yaml in an editor.
 
