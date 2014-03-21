@@ -1,0 +1,1 @@
+* * * * * vagrant /vagrant/loadreport.rb >> /vagrant/loadreport.log 2>&1
