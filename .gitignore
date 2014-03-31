@@ -21,7 +21,8 @@ doc/
 .vagrant
 
 # M2X-specific
-loadreport_feed_info.yaml
 loadreport.log
-stockreport_feed_info.yaml
+loadreport.log.*
 stockreport.log
+stockreport.log.*
+m2x_api_key.txt

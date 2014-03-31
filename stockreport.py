@@ -1,20 +1,26 @@
 #!/usr/bin/env python
 
+import time
+
+
+
 import datetime
 
-import yaml
 import ystockquote
 
 from m2x.client import M2XClient
 
-# Load config
-config = yaml.safe_load(open('/vagrant/stockreport_feed_info.yaml'))
+TIMEFORMAT = "%Y-%m-%d %H:%M:%S"
+print("%s: Starting stockreport.py run" % time.strftime(TIMEFORMAT))
 
+
+# Load config
+APIKEY = open('/vagrant/m2x_api_key.yaml').read().strip()
 now = datetime.datetime.now()
 ATT_Stock_Price = ystockquote.get_price('T')
 
 # Now let's create a blueprint:
-client = M2XClient(key=config['apikey'])
+client = M2XClient(key=APIKEY)
 stockreport_blueprint_exists = False
 for blueprint in client.blueprints:
     if blueprint.name == "stockreport":
@@ -44,3 +50,5 @@ stream.update(unit={'label': 'Dollars', 'symbol': '$'})
 
 stream.values.add_value(ATT_Stock_Price, now)
 
+print("%s: Ending stockreport.py run" % time.strftime(TIMEFORMAT))
+print

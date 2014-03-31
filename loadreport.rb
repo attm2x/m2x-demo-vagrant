@@ -1,28 +1,51 @@
 #!/usr/bin/env ruby
 
 require "m2x"
-require "yaml"
 TIMEFORMAT = "%Y-%m-%d %H:%M:%S"
+BPNAME = "loadreport"
 
-puts Time.now.strftime(TIMEFORMAT) + " Starting loadreport.rb run"
+puts Time.now.strftime(TIMEFORMAT) + ": Starting loadreport.rb run"
 
+APIKEY = File.read('/vagrant/m2x_api_key.txt').strip
 
-feedinfo = YAML.load_file('/vagrant/loadreport_feed_info.yaml')
-API_KEY = feedinfo["apikey"]
-FEED = feedinfo["feedid"]
+m2x = M2X.new(APIKEY)
 
-
-m2x = M2X.new(API_KEY)
-
+# Get our load data from the system
 # Match `uptime` load averages output for both Linux and OSX
 UPTIME_RE = /(\d+\.\d+),? (\d+\.\d+),? (\d+\.\d+)$/
-
 load_1m, load_5m, load_15m = `uptime`.match(UPTIME_RE).captures
+
+# Test to see if our blueprint exists
+loadreport_blueprint_exists = false
+blueprints = m2x.blueprints.list()
+
+puts blueprints.json
+
+blueprints.json["blueprints"].each { |bp|
+    if bp['name'] == BPNAME
+        loadreport_blueprint_exists = true
+        lr_blueprint = bp
+        puts "Using existing blueprint..."
+    end
+}
+
+if not loadreport_blueprint_exists
+    puts "About to create the blueprint..."
+    lr_blueprint = m2x.blueprints.create(name: BPNAME, visibility: "private", description: "Load Report")
+    puts "Done creating blueprint."
+end
+
+
+feed = lr_blueprint.json['feed']
+
+feed.to_json['streams'].each { |s|
+    puts s.to_json['name']
+    }
 
 # Write the different values into AT&T M2X
 m2x.feeds.update_stream(FEED, "load_1m",  value: load_1m)
 m2x.feeds.update_stream(FEED, "load_5m",  value: load_5m)
 m2x.feeds.update_stream(FEED, "load_15m", value: load_15m)
 
-puts Time.now.strftime(TIMEFORMAT) + " Ending loadreport.rb run"
+puts Time.now.strftime(TIMEFORMAT) + ": Ending loadreport.rb run"
 puts
