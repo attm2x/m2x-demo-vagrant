@@ -15,9 +15,9 @@ Please note that the virtual machine and M2X are using times in UTC, not in your
 
 ## Pre-Requisites
 
-You will need to have [Vagrant](http://www.vagrantup.com/) and [VirtualBox](https://www.virtualbox.org/) installed on your computer. Both are free, and have versions for Mac OS X, Windows, and Linux.
+You will need to have [Vagrant](http://www.vagrantup.com/) and [VirtualBox](https://www.virtualbox.org/) installed on your computer. Both are free, and there are versions for Mac OS X, Windows, and Linux.
 
-You will also need an account on [m2x.att.com](https://m2x.att.com), which is currently free to everyone. (Future plans call for M2X to keep a free "Developer" plan, but to charge for very large volumes of data.)
+You will also need an account on AT&amp;T's M2X service ([m2x.att.com](https://m2x.att.com)), which is currently free to everyone. (Future plans call for M2X to keep a free "Developer" plan, but to charge for very large volumes of data.)
 
 ## Installation
 
@@ -37,7 +37,7 @@ vagrant up
 
 This process should take between 2 and 10 minutes, depending on the speed of your computer and your network connection, and whether or not you've previously downloaded the "Precise64" Vagrant image.
 
-If you are using VirtualBox 4.3.10, and you have the [vagrant-vbguest](https://github.com/dotless-de/vagrant-vbguest) plugin installed (as I highly recommend you do) then you'll experience problems mounting the /vagrant directory. Until this is fixed in the next release of VirtualBox, I've included a fix in the Vagrantfile for this virtual machine. Unfortunately, it's a multi-step process:
+If you are using VirtualBox 4.3.10, and you have the [vagrant-vbguest](https://github.com/dotless-de/vagrant-vbguest) plugin installed (as we highly recommend you do) then you'll experience problems mounting the /vagrant directory. Until this is fixed in the next release of VirtualBox, we've included a fix in the Vagrantfile for this virtual machine. Unfortunately, it's a multi-step process:
 
 ```
 vagrant up
@@ -47,7 +47,7 @@ vagrant provision
 vagrant reload --provision
 ```
 
-After doing all three steps you should have a working Vagrant/VirtualBox VM. If you'd like more details about the bug and this fix, you can read them [on my personal blog](http://schof.org/2014/03/31/working-around-virtualbox-bug-12879/).
+After doing all three steps you should have a working Vagrant/VirtualBox VM. If you'd like more details about the bug and this fix, you can read them [here](http://schof.org/2014/03/31/working-around-virtualbox-bug-12879/).
 
 ### M2X API Key
 
@@ -69,4 +69,9 @@ If there are any errors from stockreport.py, they will be logged in stockreport.
 
 ## Important Note About Security
 
-The individual demos do not contain any bad security examples that we're aware of. However, the bootstrap.bash script that configures the virtual machine does not update the operating system, and does not ensure it has the latest version of a number of packages. This is because updating the OS would increase tenfold the time involved in setting up this virtual machine. If you are building a production machine from this example, make sure your software gets updated.
+The individual demos included here do not contain any bad security examples that we're aware of. However, the bootstrap.bash script that configures the virtual machine does not update the operating system, and does not ensure it has the latest version of a number of packages. This is because updating the OS would increase tenfold the time involved in setting up this virtual machine. If you are building a production machine from this example, make sure your software gets updated.
+
+License
+=======
+
+This library is released under the MIT license. See ``LICENSE`` for the terms.
