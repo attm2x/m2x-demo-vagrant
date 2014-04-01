@@ -36,16 +36,17 @@ if not loadreport_blueprint_exists
 end
 
 
-feed = lr_blueprint.json['feed']
+feed = m2x.blueprints.view(lr_blueprint.to_json["id"])
+
 
 feed.to_json['streams'].each { |s|
     puts s.to_json['name']
     }
 
 # Write the different values into AT&T M2X
-m2x.feeds.update_stream(FEED, "load_1m",  value: load_1m)
-m2x.feeds.update_stream(FEED, "load_5m",  value: load_5m)
-m2x.feeds.update_stream(FEED, "load_15m", value: load_15m)
+m2x.feeds.update_stream(feed, "load_1m",  value: load_1m)
+m2x.feeds.update_stream(feed, "load_5m",  value: load_5m)
+m2x.feeds.update_stream(feed, "load_15m", value: load_15m)
 
 puts Time.now.strftime(TIMEFORMAT) + ": Ending loadreport.rb run"
 puts
