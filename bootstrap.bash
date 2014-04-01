@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-
-
 set -e
 
 apt-get update
@@ -23,6 +21,7 @@ fi
 # Set up loadreport.rb to run every minute
 chmod 754 /vagrant/loadreport.rb
 cp /vagrant/loadreport.cron /etc/cron.d/loadreport
+chmod 644 /etc/cron.d/loadreport
 
 # Keep loadreport.log from getting too large
 cp /vagrant/loadreport.logrotate /etc/logrotate.d/loadreport
@@ -39,6 +38,7 @@ pip install pyyaml --upgrade
 
 chmod 754 /vagrant/stockreport.py
 cp /vagrant/stockreport.cron /etc/cron.d/stockreport
+chmod 644 /etc/cron.d/stockreport
 cp /vagrant/stockreport.logrotate /etc/logrotate.d/stockreport
 
 echo "Done setting up demos."
