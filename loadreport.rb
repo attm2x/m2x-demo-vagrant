@@ -21,6 +21,8 @@ blueprints = m2x.blueprints.list()
 
 puts blueprints.json
 
+lr_blueprint = nil
+
 blueprints.json["blueprints"].each { |bp|
     if bp['name'] == BPNAME
         loadreport_blueprint_exists = true
