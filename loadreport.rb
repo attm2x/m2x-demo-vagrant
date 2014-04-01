@@ -2,7 +2,7 @@
 
 require "m2x"
 TIMEFORMAT = "%Y-%m-%d %H:%M:%S"
-BPNAME = "loadreport"
+BPNAME = "loadreport-vagrant"
 
 
 puts Time.now.strftime(TIMEFORMAT) + ": Starting loadreport.rb run"

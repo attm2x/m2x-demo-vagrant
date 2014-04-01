@@ -10,6 +10,8 @@ from m2x.client import M2XClient
 TIMEFORMAT = "%Y-%m-%d %H:%M:%S"
 print("%s: Starting stockreport.py run" % time.strftime(TIMEFORMAT))
 
+BLUEPRINT_NAME = "stockreport-vagrant"
+
 
 # Load config
 APIKEY = open('/vagrant/m2x_api_key.txt').read().strip()
@@ -20,13 +22,13 @@ ATT_Stock_Price = ystockquote.get_price('T')
 client = M2XClient(key=APIKEY)
 stockreport_blueprint_exists = False
 for blueprint in client.blueprints:
-    if blueprint.name == "stockreport":
+    if blueprint.name == BLUEPRINT_NAME:
         stockreport_blueprint_exists = True
         break
 
 if not stockreport_blueprint_exists:
     blueprint = client.blueprints.create(
-        name="stockreport",
+        name=BLUEPRINT_NAME,
         description="Stockreport Example Blueprint",
         visibility="private")
 
