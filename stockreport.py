@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 
+import os
 import time
+
 import datetime
 
 import ystockquote
@@ -10,44 +12,40 @@ from m2x.client import M2XClient
 TIMEFORMAT = "%Y-%m-%d %H:%M:%S"
 print("%s: Starting stockreport.py run" % time.strftime(TIMEFORMAT))
 
-BLUEPRINT_NAME = "stockreport-vagrant"
-
+DEVICE_NAME = "stockreport-heroku"
 
 # Load config
-APIKEY = open('/vagrant/m2x_api_key.txt').read().strip()
+APIKEY = open(os.environ['OPENSHIFT_REPO_DIR'] + 'm2x_api_key.txt').read().strip()
 now = datetime.datetime.now()
 ATT_Stock_Price = ystockquote.get_price('T')
 
-# Now let's create a blueprint:
+# Now let's create a device:
 client = M2XClient(key=APIKEY)
-stockreport_blueprint_exists = False
-for blueprint in client.blueprints:
-    if blueprint.name == BLUEPRINT_NAME:
-        stockreport_blueprint_exists = True
+stockreport_device_exists = False
+for device in client.devices:
+    if device.name == DEVICE_NAME:
+        stockreport_device_exists = True
         break
 
-if not stockreport_blueprint_exists:
-    blueprint = client.blueprints.create(
-        name=BLUEPRINT_NAME,
-        description="Stockreport Example Blueprint",
+if not stockreport_device_exists:
+    device = client.devices.create(
+        name=DEVICE_NAME,
+        description="Stockreport Example Device",
         visibility="private")
-
-# We get the feed that was automatically created when we created the blueprint
-feed = blueprint.feed
 
 # Now we need to get the stream for AT&T's stock ticker symbol ("T")
 ATT_Stream_Exists = False
-for stream in feed.streams:
+for stream in device.streams:
     if stream.name.upper() == "T":
         ATT_Stream_Exists = True
         break
 
 if not ATT_Stream_Exists:
-    stream = feed.streams.create('T')
+    stream = device.streams.create('T')
 
 stream.update(unit={'label': 'Dollars', 'symbol': '$'})
 
-stream.values.add_value(ATT_Stock_Price, now)
+stream.values.add_value(ATT_STOCK_PRICE, NOW)
 
-print("%s: Ending stockreport.py run" % time.strftime(TIMEFORMAT))
+print("Ending stockreport.py run")
 print

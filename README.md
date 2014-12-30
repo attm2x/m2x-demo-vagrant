@@ -56,7 +56,7 @@ Next you'll need to get your M2X API Master Key. Log into M2X, and click your na
 
 ## Ruby Demo
 
-You should now be sending data on 1-minute, 5-minute, and 15-minute load averages from your Vagrant virtual machine to AT&T M2X. It should be updating every minute, and if you refresh your AT&T M2X "loadreport" Blueprint page, you should be able to click each load average and see graphs showing your load averages over time.
+You should now be sending data on 1-minute, 5-minute, and 15-minute load averages from your Vagrant virtual machine to AT&T M2X. It should be updating every minute, and if you refresh your AT&T M2X "loadreport" Device page, you should be able to click each load average and see graphs showing your load averages over time.
 
 If not, you can look at loadreport.log in your repo, which records any errors in sending the data to M2X. You can also SSH to the Vagrant virtual machine with the ```vagrant ssh``` command to run standard Linux/Unix troubleshooting commands.
 
