@@ -45,7 +45,7 @@ if not ATT_Stream_Exists:
 
 stream.update(unit={'label': 'Dollars', 'symbol': '$'})
 
-stream.values.add_value(ATT_STOCK_PRICE, NOW)
+stream.values.add_value(ATT_STOCK_PRICE, now)
 
 print("Ending stockreport.py run")
 print
