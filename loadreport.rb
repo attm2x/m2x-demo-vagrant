@@ -4,10 +4,9 @@ require "m2x"
 require "time"
 
 DEVICE_NAME = "loadreport-vagrant-demo"
+APIKEY      = File.read(File.expand_path("../m2x_api_key.txt", __FILE__)).strip
 
 puts "Starting loadreport.rb at #{Time.now.iso8601}"
-
-APIKEY = ENV.fetch("M2X_API_KEY")
 
 m2x = M2X::Client.new(APIKEY)
 
