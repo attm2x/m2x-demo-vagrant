@@ -3,7 +3,7 @@
 
 ## Introduction
 
-This repo provides a Vagrant virtual machine that contains several demo applications that report data to AT&T M2X:
+This repository provides a Vagrant virtual machine that contains several demo applications that report data to AT&T M2X:
 
 * A Ruby application that reports the system load (on 1-minute, 5-minute, and 15-minute averages, as reported by uptime) to M2X every minute.
 * A Python application that reports the current stock price of AT&T's stock (ticker symbol "T") every minute.
@@ -11,7 +11,6 @@ This repo provides a Vagrant virtual machine that contains several demo applicat
 All the steps required to set up all demos are in bootstrap.bash, so if you want to replicate any part of this setup on your own systems, you can easily see what we've done.
 
 Please note that the virtual machine and M2X are using times in UTC, not in your local time zone.
-
 
 ## Pre-Requisites
 
