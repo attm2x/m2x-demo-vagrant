@@ -37,18 +37,6 @@ vagrant up
 
 This process should take between 2 and 10 minutes, depending on the speed of your computer and your network connection, and whether or not you've previously downloaded the "Precise64" Vagrant image.
 
-If you are using VirtualBox 4.3.10, and you have the [vagrant-vbguest](https://github.com/dotless-de/vagrant-vbguest) plugin installed (as we highly recommend you do) then you'll experience problems mounting the /vagrant directory. Until this is fixed in the next release of VirtualBox, we've included a fix in the Vagrantfile for this virtual machine. Unfortunately, it's a multi-step process:
-
-```
-vagrant up
-# See the error about vboxsf and /vagrant
-vagrant provision
-# See the message about running "vagrant reload --provision"
-vagrant reload --provision
-```
-
-After doing all three steps you should have a working Vagrant/VirtualBox VM. If you'd like more details about the bug and this fix, you can read them [here](http://schof.org/2014/03/31/working-around-virtualbox-bug-12879/).
-
 ### M2X API Key
 
 Next you'll need to get your M2X API Master Key. Log into M2X, and click your name in the upper right-hand corner, then the "Account Settings" dropdown, then the "Master Keys" tab. [Here's a direct link](https://m2x.att.com/account#master-keys-tab). Copy the Master Key and paste it into the m2x_api_key.txt file. You can see an example in m2x_api_key.example.txt. It's just the API key, by itself, in a text file.
